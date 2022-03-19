@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+<!--- Start features Section --> 
+	<div id="features" class="offset">
+		<!--start jumbotron-->
+		<div class="jumbotron" style="height: 700px;">
+			<div class="narrow text-center">
+				<div class="col-12">
+					<h3 class="heading">المؤلفون</h3>
+					<div class="heading-underline"></div>
+				</div>
+				<div class="row text-center">
+				{% for author in authorList %}			
+					
+					<div class="items col-md-4">
+						<a class="item" href="/authorbooks?author={{author.name}}">
+						<h3>{{author.name}}</h3>
+						<div class="feature">
+							<i class="fas fa-user fa-3x"></i>
+						</div>
+						
+						</a>
+					</div>	
+					{% endfor %}		
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--- End fetures Section -->
+{% endblock %}

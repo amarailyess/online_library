@@ -1,0 +1,201 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<!--start landing page section-->
+		<div class="landing">
+			<div class="home-wrap">
+				<div class="home-inner">
+					
+				</div>
+			</div>
+		</div>
+		<div class="caption text-center">
+			
+			<h1>مرحبا بك في المكتبة الإلكترونية</h1>
+		
+			<h3>مكتبة ثرية وشاملة</h3>
+			<a href="#course" class="btn btn-outline-light btn-lg">اقرا الآن</a>
+		</div>
+		<!--end landing page section-->
+	<!--end of home section-->
+	</div>
+	
+	
+	<!--- Start Course Section --> 
+	<div id="course" class="offset">
+		<div class="col-12 narrow text-center">
+			<h1>الكتاب.. نافذة من خلالها نتطلع الى العالم</h1>
+			<p class="lead">القراءة هي من الأشياء التي تعلمنا الكثير من الأمور وتنمي عندنا الكثير الكثير</p>
+			<a href="{{path('list_all_books')}}" class="btn btn-secondary btn-md" > المكتبة</a>
+		</div>
+	</div>
+	<!--- End Course Section -->
+
+	<!--- Start features Section --> 
+	<div id="features" class="offset">
+		<!--start jumbotron-->
+		<div class="jumbotron">
+			<div class="narrow text-center">
+				<div class="col-12">
+					<h3 class="heading">يمكنك الإطلاع</h3>
+					<div class="heading-underline"></div>
+				</div>
+	{# afficher les 3 livre cherchés (c est mon choix)#}
+				<div class="row text-center">
+					{% if bookList|length >3%}
+					{%for book in bookList%}
+					{%if max>0 %}
+					<div class="items col-md-4">
+						<a class="item" href="files/{{book.path}}" target="_blank">
+						<div class="feature">
+							<i class="fas fa-book fa-4x"
+							data-fa-transform="shrink-3 up-5"></i>
+							<h3>{{book.title}}</h3>
+							<p>{{book.author}}</p>
+						</div>			
+						</a>
+						<div class="overlay">
+							<a href="files/{{book.path}}" target="_blank"><button class="btn btn-secondary" style="width: 10px; height: 10px;font-size: small;position:relative;top:20px">
+								<i class="fa fa-download"  style="position:relative;top:-10px ;left:-7px "></i>
+							</button></a>
+						</div>
+					</div>
+					{%endif%}
+					{% set max=max-1 %}
+					{%endfor%}
+					{%endif%}
+
+					{% if bookList|length <=3%}
+					{%for book in bookList%}
+					
+					<div class="items col-md-4">
+						<a class="item" href="files/{{book.path}}" target="_blank">
+						<div class="feature">
+							<i class="fas fa-book fa-4x"
+							data-fa-transform="shrink-3 up-5"></i>
+							<h3>{{book.title}}</h3>
+							<p>{{book.author}}</p>
+						</div>			
+						</a>
+						<div class="overlay">
+							<a href="files/{{book.path}}" target="_blank"><button class="btn btn-secondary" style="width: 10px; height: 10px;font-size: small;position:relative;top:20px">
+								<i class="fa fa-download"  style="position:relative;top:-10px ;left:-7px "></i>
+							</button></a>
+						</div>
+					</div>
+					{%endfor%}
+					{%endif%}
+
+					
+				</div>
+			</div>
+		</div>
+		<!--end jambotron-->
+
+
+	</div>
+	<!--- End fetures Section -->
+
+	<!--- Start ressources Section --> 
+	<div id="ressources" class="offset">
+		<div class="fixed-background">
+			<div class="row dark text-center">
+				<div class="col-12">
+					<h3 class="heading">المجموعات</h3>
+					<div class="heading-underline"></div>
+				</div>
+		{# afficher les 3 collection cherchés (c est mon choix)#}
+				{% if collectionList|length >3%}
+					{%for collection in collectionList%}
+					{%if maxc>0 %}
+				<div class="items col-md-4">
+					<a class="item" href="/collectionbooks?collection={{collection.name}}">
+					<h3>{{collection.name}}</h3>
+					<div class="feature">
+						<i class="fas fa-book-open fa-3x"></i>
+					</div>
+					
+				</a>
+				</div>
+				{%endif%}
+					{% set maxc=maxc-1 %}
+					{%endfor%}
+					{%endif%}
+
+				{% if collectionList|length <=3%}
+					{%for collection in collectionList%}
+					
+				<div class="items col-md-4">
+					<a class="item" href="/collectionbooks?collection={{collection.name}}">
+					<h3>{{collection.name}}</h3>
+					<div class="feature">
+						<i class="fas fa-book-open fa-3x"></i>
+					</div>
+					
+				</a>
+				</div>
+				
+					{%endfor%}
+					{%endif%}
+				
+			</div><!--end row dark-->  		
+			<div class="fixed-wrap">
+				<div class="fixed"></div>
+			</div>
+		</div><!-- end fixed background-->
+	</div>
+	<!--- End ressourcers Section -->
+
+	<!--- Start clients Section --> 
+	<div id="clients" class="offset">
+		<!--start jumbotran-->
+		<div class="jumbotran">
+			<div class="col-12 text-center">
+				<h3 class="heading">حكماء الأدب</h3>
+				<div class="heading-underline"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 clients">
+					<div class="row">
+						<div class="col-md-4">
+							<img src="img/abbes.png" alt="">
+						</div>
+						<div class="col-md-8">
+							<blockquote>
+								<i class="fas fa-quote-right"></i>
+								الكتب كالناس ، منهم السيد الوقور و منهم السيد الطريف و منهم الجميل الرائع و الساذج الصادق ، و منهم الخائن و الجاهل ، و الوضيع و الخليع ... و الدنيا تتسع لكل هؤلاء و لن تكون المكتبة كاملة إلا إذا كانت مثلاً كاملاً للدنيا .
+								<hr class="clients-hr">
+								<cite>&#8212; محمود عباس العقاد</cite>
+							</blockquote>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 clients">
+					<div class="row">
+						<div class="col-md-4">
+							<img src="img/najib.jpg" alt="">
+						</div>
+						<div class="col-md-8">
+							<blockquote>
+								<i class="fas fa-quote-right"></i>
+								ان أكبر هزيمة في حياتي هي حرماني من متعة القراءة بعد ضعف نظري .
+								<hr class="clients-hr">
+								<cite>&#8212; نجيب محفوظ</cite>
+							</blockquote>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div><!--end jumbotran-->
+		<div class="col-12 narrow text-center">
+			<p class="lead">يمكنك تحميل الكتب بصفة مجانية</p>
+			<a href="{{path('list_all_books')}}" class="btn btn-secondary btn-md" target="_blank">إلى المكتبة</a>
+
+		</div>
+
+
+	</div>
+	<!--- End clients Section -->
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+<!--- Start features Section --> 
+	<div id="features" class="offset">
+		<!--start jumbotron-->
+		<div class="jumbotron" style="height: 700px;">
+			<div class="narrow text-center">
+				<div class="col-12">
+					<h3 class="heading">المجموعات</h3>
+					<div class="heading-underline"></div>
+				</div>
+				{# **** parcour la liste des collection (resultat de recherche) **** #}
+				<div class="row text-center">
+				{% for collection in collectionList %}								
+					<div class="items col-md-4">
+	{#***** si l user click sur une collection unrecherhe de livre la lancé par le nom de collection parssé en URL ****#}
+						<a class="item" href="/collectionbooks?collection={{collection.name}}">
+						<h3>{{collection.name}}</h3>
+						<div class="feature">
+							<i class="fas fa-book-open fa-3x"></i>
+						</div>
+						
+						</a>
+					</div>	
+					{% endfor %}		
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--- End fetures Section -->
+{% endblock %}

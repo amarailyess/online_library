@@ -1,3 +1,108 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+### liste de route  ####""
+home:
+    path: /
+    controller: App\Controller\HomeController::index
+
+    ### liste de route gestion de "book" et les filtres #####
+list_all_books:
+    path: /books
+    controller: App\Controller\BookController::getAllBooks
+    methods: GET
+
+list_collection_books:
+    path: /collectionbooks
+    controller: App\Controller\BookController::getCollectionBooks
+    methods: GET
+
+list_author_books:
+    path: /authorbooks
+    controller: App\Controller\BookController::getAuthorBooks
+    methods: GET
+
+list_user_books:
+    path: /userbooks
+    controller: App\Controller\BookController::getUserBooks
+    methods: GET
+
+delete_book:
+    path: /book/delete/{id}
+    controller: App\Controller\BookController::deleteBook
+    methods: DELETE
+
+
+
+add_book:
+    path: /add_book
+    controller: App\Controller\BookController::addBook
+    methods: POST
+
+### liste de route de gestion de "collection"   ########
+
+list_all_collections:
+    path: /collections
+    controller: App\Controller\CollectionController::getAllCollections
+    methods: GET
+
+collection:
+    path: /collection/{id}
+    controller: App\Controller\CollectionController::getCollection
+    methods: GET
+
+add_collection:
+    path: /add_collection
+    controller: App\Controller\CollectionController::addCollection
+    methods: POST
+
+    ### route de gestion des "ahthor" #######
+
+list_all_authors:
+    path: /authors
+    controller: App\Controller\AuthorController::getAllAuthors
+    methods: GET
+
+add_author:
+    path: /add_author
+    controller: App\Controller\AuthorController::addAuthor
+    methods: POST
+
+author:
+    path: /author/{id}
+    controller: App\Controller\AuthorController::getAuthor
+    methods: GET
+
+    #### liste des utilisateurs  #####
+
+user:
+    path: /user/{id}
+    controller: App\Controller\UserController::getUser
+    methods: GET
+
+list_all_users:
+    path: /users
+    controller: App\Controller\UserController::getAllUsers
+    methods: GET
+
+add_user:
+    path: /add_user
+    controller: App\Controller\UserController::addUser
+    methods: POST
+
+delete_user:
+    path: /delete_user/{id}
+    controller: App\Controller\UserController::deleteUser
+    methods: DELETE
+
+#### phase login ######
+#login:
+ #   path: /login
+ #   controller: App\Controller\ConnexionController::index
+ #   methods: POST
+
+##### l acces au recherche  ######
+search:
+    path: /search
+    controller: App\Controller\HomeController::getSearch
+    methods: GET
+
+
+

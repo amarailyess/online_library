@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<div id="features" class="offset">
+		<!--start jumbotron-->
+		<div class="jumbotron" >
+			<div class="narrow text-center">
+		
+				<div class="col-12">
+	{# *** tester selon le type de recherhe pour specifier le message concercé pour chaque type de recherche #}	
+				{% if type=="collection"%}
+				{% if bookList|length==0%}
+			<div class="alert alert-warning" role="alert">لا توجد كتب في هذه المجموعة</div>
+			{%endif%}
+			{%endif%}
+			{% if type=="search"%}
+				{% if bookList|length==0%}
+			<div class="alert alert-warning" role="alert">لا توجد نتيجة في البحث</div>
+			{%endif%}
+			{%endif%}
+			{% if type=="author"%}
+				{% if bookList|length==0%}
+			<div class="alert alert-warning" role="alert">لا توجد للمؤلف المطلوب</div>
+			{%endif%}
+			{%endif%}
+			{% if type=="all"%}
+				{% if bookList|length==0%}
+			<div class="alert alert-warning" role="alert">لا توجد كتب</div>
+			{%endif%}
+			{%endif%}
+				{% if bookList|length>0%}
+					<h3 class="heading">يمكنك الإطلاع</h3>
+					<div class="heading-underline"></div>
+				</div>
+				
+				
+	{# **** si on a une resultat on parcours le liste des livres
+	et affecter chaque infomation (le nom de livre,l auteur, le pdf, l image de livre) *****#}				
+				
+				<div class="row text-center">
+				{% for book in bookList %}			
+					<div class="items col-md-3">
+						<a class="item" href="files/{{book.path}}" target="_blank">
+						<div class="feature">
+						<h3>{{book.title}}</h3>
+							<img src="books/{{book.image}}" class="img-thumbnail">				
+							<p>{{book.author}}</p>
+						</div>
+						</a>
+						<div class="overlay">
+							<a href="files/{{book.path}}" target="_blank"><button class="btn btn-secondary" style="width: 10px; height: 10px;font-size: small;position:relative;top:20px">
+								<i class="fa fa-download"  style="position:relative;top:-10px ;left:-7px "></i></a>
+							</button>
+						</div>
+					</div>
+					{% endfor %}	
+				</div>	
+			</div>
+			{%endif%}					
+	</div>	
+</div>
+{% endblock %}
