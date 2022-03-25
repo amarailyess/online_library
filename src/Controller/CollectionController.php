@@ -50,6 +50,7 @@ class CollectionController extends AbstractController
         $newCollection = new Collection();
         $newCollection->setNbbooks($request->query->get('nbBooks'));
         $newCollection->setName($request->query->get('name'));
+
        
         /* charger la l objet collection */ 
         $this->entityManager->persist($newCollection);
